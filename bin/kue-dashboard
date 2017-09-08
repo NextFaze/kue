@@ -6,7 +6,9 @@ var argv = require('yargs')
 	.describe('r', 'Redis url')
 	.describe('p', 'Dashboard port')
 	.describe('q', 'Prefix to use')
+	.describe('u', 'Use uuid for ids')
 	.default('p', 3000)
+	.default('u', false)
 	.default('r', 'redis://127.0.0.1:6379')
 	.default('q', 'q')
 	.help('h')
@@ -16,7 +18,8 @@ var argv = require('yargs')
 
 kue.createQueue({
   redis: argv.r,
-  prefix: argv.q
+  prefix: argv.q,
+  uuid: argv.u
 });
 
 
